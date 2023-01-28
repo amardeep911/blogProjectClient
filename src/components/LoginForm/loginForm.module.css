@@ -1,0 +1,83 @@
+.formContainer {
+    height: 35rem;
+    background-color: hsl(219, 29%, 14%);
+    width: fit-content;
+    margin: auto;
+    margin-top: 5%;
+    border-radius: 15px;
+    padding: 25px 25px;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.username{
+    font-weight: 300;
+    font-size: 24px;
+}
+.userInput{
+    width: 70%;
+    /* margin: auto; */
+    font-size: 20px;
+    border: none;
+    height: 2rem;
+    border: solid 2px blue;
+    border-radius: 7px;
+}
+
+.userInput:active{
+    border: none;
+    border: solid 2px red;
+}
+.userInputValid{
+    opacity: 0;
+}
+
+/* .logInBtn {
+    color: rgb(104, 85, 224);
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(104, 85, 224, 1);
+    margin-top: 40px;
+    font-size: 1rem;
+    width: 8rem;
+    height: 4rem;
+  } */
+  
+  
+/* .logInBtn{
+    background-color: rgb(203, 189, 189);
+    width: 8rem;
+    height: 2rem;
+    border-radius: 10px;
+    margin-top: 40px;
+    font-size: 1.2rem;
+    color: rgb(0, 0, 0);
+    border: none;
+}
+.logInBtn:hover{
+    background-color: brown;
+    color: white;
+}
+.logInBtn:active{
+    scale: 1.2;
+} */
+.logInBtn{
+    background-color: rgb(228, 192, 240);
+    width: 8rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    color: rgb(0, 0, 0);
+    border: none;
+}
+.logInBtn:hover{
+    background-color: rgb(237, 58, 58);
+    color: white;
+    scale: 1;
+}
+.logInBtn:active{
+    scale: 1.2;
+}
