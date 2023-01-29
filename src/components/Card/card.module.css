@@ -51,7 +51,7 @@
 }
 .img {
   width: 300px;
-  height: 100px;
+  height: 150px;
 }
 .footer {
   margin-left: 1rem;
@@ -98,7 +98,7 @@
   }
   .right img {
     margin: auto;
-    width: 4rem;
+    width: 3.5rem;
     height: 3rem;
   }
 }

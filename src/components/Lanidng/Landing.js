@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { getUser } from "../../api/User";
 import { LogOutUser } from "../../actions/user_action";
 import { LoginUser } from "../../actions/user_action";
-
+import Navbar from "../Navbar/Navbar";
 const Landing = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
@@ -40,9 +40,11 @@ const Landing = () => {
   return loading ? (
     "Loading"
   ) : (
+    <>
+    <Navbar/>
     <div className={styles.container}>
       <div className={styles.left}>
-        <h1 className={styles.title}>BlogCart</h1>
+        <h1 className={styles.title}>BlogKart</h1>
         <h1 className={styles.heading}>
           Thoughts & ideas around the things that actually matter
         </h1>
@@ -58,6 +60,7 @@ const Landing = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

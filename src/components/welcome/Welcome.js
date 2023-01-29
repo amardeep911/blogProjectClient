@@ -38,6 +38,8 @@ const Welcome = () => {
   }, []);
   console.log(blogsArray);
   return (
+    <>
+    <Navbar/>
     <div className={styles.container}>
       <div className={styles.main}>
         <div className={styles.blank}></div>
@@ -55,11 +57,12 @@ const Welcome = () => {
             );
           })}
 
-          <button onClick={createNewHandler}>Create New</button>
+          {/* <button onClick={createNewHandler}>Create New</button> */}
         </div>
         <div className={styles.blank}></div>
       </div>
     </div>
+    </>
   );
 };
 

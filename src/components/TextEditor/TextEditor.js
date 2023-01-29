@@ -3,7 +3,7 @@ import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import styles from './TextEditor.module.css'
 import { useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
@@ -45,14 +45,8 @@ export default function TextEditor2() {
       .catch((err) => console.log("error"));
   };
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Enter tittle here"
-        onChange={(event) => {
-          setBlogTitle(event.target.value);
-        }}
-      />
+    <div className={styles.container}>
+      <div className="tools">
       <Editor
         editorState={editorState}
         toolbarClassName="toolbarClassName"
@@ -60,17 +54,27 @@ export default function TextEditor2() {
         editorClassName="editorClassName"
         onEditorStateChange={onEditorStateChange}
       />
-
-      <div
-        ref={myRef}
-        style={{
-          width: "100%",
-          height: "auto",
-          border: "2px solid black",
+      </div>
+      <div className={styles.innerContainer}>
+      <div className={styles.left}>
+      <div className={styles.title}>Enter Title here</div>
+      <input
+        type="text"
+        placeholder="Enter Tittle here"
+        onChange={(event) => {
+        setBlogTitle(event.target.value);
+        
         }}
-      ></div>
-      <button onClick={onPreview}>PREVIEW</button>
-      <button onClick={blogSaveHandler}>Save</button>
+        className={styles.titleInput}
+      />
+
+      <div className={styles.blogContentTitle}>Enter Blog here</div>
+
+
+      </div>
+      <div className={styles.right}></div>
+      </div>
+      
     </div>
   );
 }
