@@ -55,5 +55,10 @@
   color: white;
 }
 .navButton {
-  visibility: hidden;
+  visibility: visible;
+}
+@media(max-width: 500px){
+.container{
+    visibility: hidden;
+}
 }

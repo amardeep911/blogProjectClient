@@ -24,8 +24,8 @@ const Navbar = () => {
         <a id="create" className="menu-item" href="/ff">
           Contact
         </a>
-        <a onClick={showSettings} className="menu-item--small" href="/">
-          Settings
+        <a id="Write blog" className="menu-item" href="#" onClick={submitHandler}>
+          Write blogs
         </a>
       </Menu>
       <div className={styles.container}>
@@ -39,7 +39,7 @@ const Navbar = () => {
               <a href="/">My Blogs</a>
             </li>
             <li>
-              <a href="/" onClick={submitHandler}>
+              <a href="#" onClick={submitHandler}>
                 Write Blog
               </a>
             </li>
