@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar/Navbar";
 import PrivateRoutes from "./routerutils/PrivateRoutes";
 import Landing from "./components/Lanidng/Landing";
 import BlogPage from "./components/BlogPage/Blog";
-
+import NewEditor from "./components/NewEditor/NewEditor";
 import TextEditor from "./components/TextEditor/TextEditor";
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
         <Route path="/blogpage" element={<BlogPage />} />
       </Route>
 
+      <Route path="/neweditor" element={<NewEditor/>} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/card" element={<Card />} />
       <Route path="/nav" element={<Navbar />} />
