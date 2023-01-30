@@ -7,7 +7,9 @@ import styles from "./navbar.module.css";
 const Navbar = () => {
   const navigate = useNavigate();
   function submitHandler() {
-    navigate("/editor");
+    navigate("/editor", {
+      state: { isEdit: false },
+    });
   }
   function showSettings(event) {
     event.preventDefault();
@@ -24,7 +26,12 @@ const Navbar = () => {
         <a id="create" className="menu-item" href="/ff">
           Contact
         </a>
-        <a id="Write blog" className="menu-item" href="#" onClick={submitHandler}>
+        <a
+          id="Write blog"
+          className="menu-item"
+          href="#"
+          onClick={submitHandler}
+        >
           Write blogs
         </a>
       </Menu>

@@ -2,33 +2,59 @@ import React from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import styles from "./TextEditor.module.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./EditPage.module.css";
 import { useState } from "react";
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
+import { convertFromHTML, ContentState } from "draft-js";
+import { useEffect } from "react";
 
-export default function TextEditor2(isEdit) {
+export default function EditPage(isEdit) {
+  const location = useLocation();
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const navigate = useNavigate();
   const [blogTitle, setBlogTitle] = useState("");
   function onEditorStateChange(editorState) {
     setEditorState(editorState);
   }
-  // const onPreview = () => {
-  //   const displayElement = myRef.current;
-  //   displayElement.innerHTML = `${draftToHtml(
-  //     convertToRaw(editorState.getCurrentContent())
-  //   )}`;
-  //   setRefresh((state) => !state);
-  // };
-  const blogSaveHandler = () => {
-    console.log();
+  useEffect(() => {
+    //fetch blog from server
+    async function fetchBlog(id) {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        params: {
+          blogId: id,
+        },
+      };
+
+      axios
+        .get("http://localhost:8080/blog/getsingleblog", config, {})
+        .then((res) => {
+          const htmlData = res.data.blogContent;
+          const blocksFromHTML = convertFromHTML(htmlData);
+          const contentState = ContentState.createFromBlockArray(
+            blocksFromHTML.contentBlocks,
+            blocksFromHTML.entityMap
+          );
+
+          setEditorState(EditorState.createWithContent(contentState));
+        })
+        .catch((err) => console.log(err));
+    }
+    fetchBlog(location.state.blogId);
+  }, []);
+  const updateHandler = () => {
+    console.log(convertToRaw(editorState.getCurrentContent()));
     const data = {
       blogContent: draftToHtml(convertToRaw(editorState.getCurrentContent())),
       blogTitle: blogTitle,
       blogText: convertToRaw(editorState.getCurrentContent()).blocks[0].text,
       blogRawContentData: convertToRaw(editorState.getCurrentContent()),
+      blogId: location.state.blogId,
     };
     const config = {
       headers: {
@@ -37,9 +63,9 @@ export default function TextEditor2(isEdit) {
       data: data,
     };
     axios
-      .post("http://localhost:8080/blog/save", config, data)
+      .put("http://localhost:8080/blog/update", config, data)
       .then((res) => {
-        navigate("/blogpage", { state: { blogId: res.data.blogId } });
+        navigate("/blogPage", { state: { blogId: res.data.blogId } });
       })
       .catch((err) => console.log("error"));
   };
@@ -65,9 +91,9 @@ export default function TextEditor2(isEdit) {
           editorClassName={styles.editor}
           onEditorStateChange={onEditorStateChange}
         />
-        <button className={styles.editorSubmitButton} onClick={blogSaveHandler}>
+        <button className={styles.editorSubmitButton} onClick={updateHandler}>
           {" "}
-          Submit
+          Update
         </button>
       </div>
 

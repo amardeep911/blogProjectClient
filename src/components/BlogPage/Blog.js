@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styles from "./Blog.module.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 const BlogPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,22 +27,35 @@ const BlogPage = () => {
         .then((res) => {
           const displayElement = document.getElementById("displayElement");
           displayElement.innerHTML = `${res.data.blogContent}`;
+          const headingBlog = document.getElementById("blogHeading");
+          headingBlog.innerText = `${res.data.blogTitle}`;
         })
         .catch((err) => console.log(err));
     }
     fetchBlog(location.state.blogId);
   }, []);
 
+  function editBlogHandler() {
+    navigate("/editpage", {
+      state: { blogId: location.state.blogId, isEdit: true },
+    });
+  }
+  function backHandler() {
+    navigate("/homePage");
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.blank}></div>
       <div className={styles.blogContent}>
-        <p className={styles.heading}>
-          ChatGPT in an iOS Shortcut — Worlds Smartest HomeKit Voice Assistant
-        </p>
+        <h1 className={styles.heading} id={"blogHeading"}>
+          temp
+        </h1>
         <div className={styles.blogText} id="displayElement">
           {isLoading && <div>Blog is lOADING</div>}
         </div>
+        <button onClick={editBlogHandler}> Edit </button>
+        <button onClick={backHandler}> Home Page </button>
       </div>
       <div className={styles.blank}></div>
     </div>
