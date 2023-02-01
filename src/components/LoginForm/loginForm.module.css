@@ -1,120 +1,119 @@
-.container{
-    width: 100%;
-    height: 100vh;
-    background-image: url("../../assets//images/background.png");
+.container {
+  width: 100%;
+  height: 95vh;
+  background-image: url("../../assets//images/background.png");
 }
-.innerContainer{
-    
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+.innerContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
 }
-.left{
-    /* background-color: aqua; */
-    width: 80%;
-    height: 80vh;
-    margin-left: 10rem;
-    margin-top: 5rem;
+.left {
+  /* background-color: aqua; */
+  width: 80%;
+  height: 80vh;
+  margin-left: 10rem;
+  margin-top: 5rem;
 }
 .title {
-    margin-top: 4rem;
-    font-size: 3.8rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    color: aliceblue;
-  }
-.logInText{
-    margin-top: 4rem;
-    font-size: 3rem;
-    font-family: "Archivo Black", sans-serif;
-    font-family: "Montserrat", sans-serif;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    color: aliceblue;
+  margin-top: 4rem;
+  font-size: 3.8rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  color: aliceblue;
 }
-.right{
-    margin-left: 5rem;
-    /* background-color: rgb(92, 99, 230); */
-    width: 80%;
-    height: 80vh;
-    /* margin: auto; */
-    margin-top: 5rem;
+.logInText {
+  margin-top: 4rem;
+  font-size: 3rem;
+  font-family: "Archivo Black", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  color: aliceblue;
 }
-.username{
-    margin-top: 4rem;
-    font-size: 2.8rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    color: aliceblue;
+.right {
+  margin-left: 5rem;
+  /* background-color: rgb(92, 99, 230); */
+  width: 80%;
+  height: 80vh;
+  /* margin: auto; */
+  margin-top: 5rem;
 }
-.userInput{
-    margin-top: 1rem;
-    width: 30rem;
-    height: 2.5rem;
-    background: #FAFAFA;
-    border: 1px solid #010818;
-    border-radius: 9px;
-    font-size: 1.5rem;
-    text-indent: 1rem;
+.username {
+  margin-top: 4rem;
+  font-size: 2.8rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  color: aliceblue;
 }
-.password{
-    margin-top: 1rem;
-    font-size: 2.8rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    color: aliceblue;
+.userInput {
+  margin-top: 1rem;
+  width: 30rem;
+  height: 2.5rem;
+  background: #fafafa;
+  border: 1px solid #010818;
+  border-radius: 9px;
+  font-size: 1.5rem;
+  text-indent: 1rem;
 }
-.logInScreenBtn{
-    margin-top: 3rem;
-    background: #E4C0F0;
-    border-radius: 10px;
-    width: 7rem;
-    height: 3rem;
-    font-size: 1.5rem;
-    font-weight: 300;
+.password {
+  margin-top: 1rem;
+  font-size: 2.8rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  color: aliceblue;
+}
+.logInScreenBtn {
+  margin-top: 3rem;
+  background: #e4c0f0;
+  border-radius: 10px;
+  width: 7rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 
-@media (max-width: 500px){
-    .innerContainer{
-        background-color: #522361;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        
-       /* background-size: cover; */
-    }
-    .left{
-        /* background-color: aqua; */
-        width: 80%;
-        margin: auto;
-        height: 80%;
-    }
-    .title{
-        font-size: 3.5rem;
-        margin-top: 1rem;
-    }
-    .logInText{
-        font-size: 25px;
-        margin-top: 1rem;
-    }
-    .right{
-        width: 90%;
-        margin: auto;
-    }
-    .username{
-        margin-left: 1rem;
-        font-size: 2rem;
-    }
-    .userInput{
-        margin-left: 1rem;
-        width: 20rem;
-        font-size: 1.5rem;
-    }
-    .password{
-        margin-left: 1rem;
-        font-size: 2rem;
-    }
-    .logInScreenBtn{
-       margin-left: 1rem;
-    }
+@media (max-width: 500px) {
+  .innerContainer {
+    background-color: #522361;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    /* background-size: cover; */
+  }
+  .left {
+    /* background-color: aqua; */
+    width: 80%;
+    margin: auto;
+    height: 80%;
+  }
+  .title {
+    font-size: 3.5rem;
+    margin-top: 1rem;
+  }
+  .logInText {
+    font-size: 25px;
+    margin-top: 1rem;
+  }
+  .right {
+    width: 90%;
+    margin: auto;
+  }
+  .username {
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+  .userInput {
+    margin-left: 1rem;
+    width: 20rem;
+    font-size: 1.5rem;
+  }
+  .password {
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+  .logInScreenBtn {
+    margin-left: 1rem;
+  }
 }

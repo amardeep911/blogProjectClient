@@ -2,12 +2,12 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 0.5fr 4fr 0.5fr;
 }
 .blogContent {
   background-color: rgb(244, 249, 249);
   display: grid;
-  grid-template-rows: 1fr 9fr;
+  grid-template-rows: 1fr 3fr;
 }
 .heading {
   margin: 2rem 2rem;

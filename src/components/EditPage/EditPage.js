@@ -35,6 +35,9 @@ export default function EditPage(isEdit) {
         .get("http://localhost:8080/blog/getsingleblog", config, {})
         .then((res) => {
           const htmlData = res.data.blogContent;
+          const blogTitle = res.data.blogTitle;
+          const inputElement = document.getElementById("titleInput");
+          inputElement.value = `${blogTitle}`;
           const blocksFromHTML = convertFromHTML(htmlData);
           const contentState = ContentState.createFromBlockArray(
             blocksFromHTML.contentBlocks,
@@ -76,6 +79,7 @@ export default function EditPage(isEdit) {
         <div className={styles.title}>Enter Title here</div>
         <input
           type="text"
+          id="titleInput"
           placeholder="Enter Tittle here"
           className={styles.titleInput}
           onChange={(event) => {

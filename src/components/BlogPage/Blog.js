@@ -43,6 +43,24 @@ const BlogPage = () => {
   function backHandler() {
     navigate("/homePage");
   }
+  function deleteHandler() {
+    console.log("df");
+    const blogId = location.state.blogId;
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      params: {
+        blogId: blogId,
+      },
+    };
+    axios
+      .delete("http://localhost:8080/blog/deleteblog", config)
+      .then((res) =>
+        navigate("/homePage", { state: { blogId: res.data.blogId } })
+      )
+      .catch((err) => console.log("There is an error in deleting blog"));
+  }
 
   return (
     <div className={styles.container}>
@@ -56,8 +74,8 @@ const BlogPage = () => {
         </div>
         <button onClick={editBlogHandler}> Edit </button>
         <button onClick={backHandler}> Home Page </button>
+        <button onClick={deleteHandler}> Delte Blog</button>
       </div>
-      <div className={styles.blank}></div>
     </div>
   );
 };

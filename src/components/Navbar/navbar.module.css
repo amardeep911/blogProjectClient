@@ -1,7 +1,9 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-columns: 1fr 5fr;
   background-color: rgb(76, 23, 145);
+  font-size: 2rem;
+  padding: 0.5rem 0rem;
 }
 /* .items {
     display: grid;
@@ -10,12 +12,15 @@
 } */
 .list {
   display: flex;
+  width: 100%;
   margin: auto;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .list li {
-  float: left;
   color: #f2f2f2;
   text-align: center;
+  align-items: center;
 
   text-decoration: none;
   list-style: none;
@@ -24,6 +29,7 @@
   text-decoration: none;
 
   color: white;
+  align-items: center;
 
   font-style: none;
   margin: auto;
@@ -49,16 +55,21 @@
   height: 2rem;
   font-size: 1.1rem;
   font-weight: 300;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+
+  margin-top: auto;
   /* margin: auto 10px; */
-  margin-top: 0.6rem;
+
   background-color: rgb(156, 25, 25);
   color: white;
 }
 .navButton {
   visibility: visible;
 }
-@media(max-width: 500px){
-.container{
+@media (max-width: 500px) {
+  .container {
     visibility: hidden;
-}
+  }
 }

@@ -37,27 +37,26 @@ const Navbar = () => {
       </Menu>
       <div className={styles.container}>
         <div className={styles.logo}>BlogsKart</div>
-        <div className={styles.items}>
-          <ul className={styles.list}>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/">My Blogs</a>
-            </li>
-            <li>
-              <a href="#" onClick={submitHandler}>
-                Write Blog
-              </a>
-            </li>
-            <li>
-              <a href="/">About me</a>
-            </li>
-          </ul>
-        </div>
-        <div className={styles.btn}>
-          <button className={styles.navbarButton}>LogOut</button>
-        </div>
+
+        <ul className={styles.list}>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/">My Blogs</a>
+          </li>
+          <li>
+            <a href="#" onClick={submitHandler}>
+              Write Blog
+            </a>
+          </li>
+          <li>
+            <a href="/">About me</a>
+          </li>
+          <li>
+            <button className={styles.navbarButton}>LogOut</button>
+          </li>
+        </ul>
       </div>
     </>
   );

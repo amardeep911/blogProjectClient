@@ -23,7 +23,7 @@ export default function TextEditor2(isEdit) {
   //   setRefresh((state) => !state);
   // };
   const blogSaveHandler = () => {
-    console.log();
+    console.log(convertToRaw(editorState.getCurrentContent()).blocks[0].text);
     const data = {
       blogContent: draftToHtml(convertToRaw(editorState.getCurrentContent())),
       blogTitle: blogTitle,

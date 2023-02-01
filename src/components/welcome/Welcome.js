@@ -31,7 +31,8 @@ const Welcome = () => {
       .get("http://localhost:8080/blog/getallblogs", config)
       .then((res) => {
         const data = res.data.blogsArray;
-        setBlogsArray((prevState) => [...data]);
+        console.log(data);
+        setBlogsArray([...data]);
       })
 
       .catch((err) => console.log(err));
@@ -39,29 +40,29 @@ const Welcome = () => {
   console.log(blogsArray);
   return (
     <>
-    <Navbar/>
-    <div className={styles.container}>
-      <div className={styles.main}>
-        <div className={styles.blank}></div>
-        <div className={styles.blog} id={"blogsContainer"}>
-          {blogsArray.map((item) => {
-            return (
-              <Card
-                userName={"kuldeep"}
-                title={item.blogTitle}
-                content={item.blogText}
-                date={"21th january"}
-                id={item._id}
-                key={item._id}
-              />
-            );
-          })}
+      <Navbar />
+      <div className={styles.container}>
+        <div className={styles.main}>
+          <div className={styles.blank}></div>
+          <div className={styles.blog} id={"blogsContainer"}>
+            {blogsArray.map((item) => {
+              return (
+                <Card
+                  userName={"Amardeep"}
+                  title={item.blogTitle}
+                  content={item.blogText}
+                  date={"21th january"}
+                  id={item._id}
+                  key={item._id}
+                />
+              );
+            })}
 
-          {/* <button onClick={createNewHandler}>Create New</button> */}
+            {/* <button onClick={createNewHandler}>Create New</button> */}
+          </div>
+          <div className={styles.blank}></div>
         </div>
-        <div className={styles.blank}></div>
       </div>
-    </div>
     </>
   );
 };
