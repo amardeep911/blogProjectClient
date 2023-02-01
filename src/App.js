@@ -18,11 +18,11 @@ function App() {
     <Routes>
       <Route element={<PrivateRoutes />}>
         <Route path="/homePage" element={<Welcome />} />
-        <Route path="/editor" element={<TextEditor />} />
         <Route path="/blogpage" element={<BlogPage />} />
         <Route path="/editpage" element={<EditPage />} />
       </Route>
 
+      <Route path="/editor" element={<TextEditor />} />
       <Route path="/neweditor" element={<NewEditor />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/card" element={<Card />} />

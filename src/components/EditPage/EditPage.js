@@ -8,11 +8,17 @@ import { useState } from "react";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
+import { LoginUser } from "../../actions/user_action";
+import { LogOutUser } from "../../actions/user_action";
+import { getUser } from "../../api/User";
 import { convertFromHTML, ContentState } from "draft-js";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 export default function EditPage(isEdit) {
+  const dispatch = useDispatch();
   const location = useLocation();
+
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const navigate = useNavigate();
   const [blogTitle, setBlogTitle] = useState("");
@@ -21,6 +27,23 @@ export default function EditPage(isEdit) {
   }
   useEffect(() => {
     //fetch blog from server
+
+    async function getAuth() {
+      try {
+        const user = await getUser();
+        if (!user) {
+          dispatch(LogOutUser());
+          return;
+        }
+        dispatch(LoginUser());
+        navigate("/editpage");
+      } catch (err) {
+        console.log(err);
+        dispatch(LogOutUser());
+      }
+    }
+    getAuth();
+
     async function fetchBlog(id) {
       const config = {
         headers: {
