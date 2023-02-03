@@ -9,12 +9,12 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 
 export default function TextEditor2(isEdit) {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const navigate = useNavigate();
-  const [blogTitle, setBlogTitle] = useState("");
-  function onEditorStateChange(editorState) {
-    setEditorState(editorState);
-  }
+  const [blogTitle, setBlogTitle] = useState('');
+  const [blogContent, setBlogContent] = useState('')
+  console.log(blogTitle)
+  console.log(blogContent)
+
   // const onPreview = () => {
   //   const displayElement = myRef.current;
   //   displayElement.innerHTML = `${draftToHtml(
@@ -23,12 +23,9 @@ export default function TextEditor2(isEdit) {
   //   setRefresh((state) => !state);
   // };
   const blogSaveHandler = () => {
-    console.log(convertToRaw(editorState.getCurrentContent()).blocks[0].text);
     const data = {
-      blogContent: draftToHtml(convertToRaw(editorState.getCurrentContent())),
       blogTitle: blogTitle,
-      blogText: convertToRaw(editorState.getCurrentContent()).blocks[0].text,
-      blogRawContentData: convertToRaw(editorState.getCurrentContent()),
+      blogContent: blogContent
     };
     const config = {
       headers: {
@@ -37,11 +34,14 @@ export default function TextEditor2(isEdit) {
       data: data,
     };
     axios
-      .post("http://localhost:8080/blog/save", config, data)
-      .then((res) => {
-        navigate("/blogpage", { state: { blogId: res.data.blogId } });
+      .post("http://127.0.0.1:8000/api/user/postBlog/", {
+        blogContent: blogContent,
+        blogTitle: blogTitle,
       })
-      .catch((err) => console.log("error"));
+      .then((res) => {
+        navigate("/blogpage",);
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className={styles.container}>
@@ -57,14 +57,15 @@ export default function TextEditor2(isEdit) {
           }}
         />
         <div className={styles.blogHere}>Enter blog here</div>
-
-        <Editor
-          editorState={editorState}
-          toolbarClassName="toolbarClassName"
-          wrapperClassName={styles.textarea}
-          editorClassName={styles.editor}
-          onEditorStateChange={onEditorStateChange}
+        <input
+          type="text"
+          placeholder="Enter Blog here"
+          className={styles.titleInput}
+          onChange={(event) => {
+            setBlogContent(event.target.value);
+          }}
         />
+        
         <button className={styles.editorSubmitButton} onClick={blogSaveHandler}>
           {" "}
           Submit

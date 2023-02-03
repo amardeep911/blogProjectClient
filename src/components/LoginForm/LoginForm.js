@@ -3,7 +3,7 @@ import styles from "./loginForm.module.css";
 import "./loginForm.module.css";
 import { useRef, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import background from "../../assets/images/background.png";
 import { useDispatch } from "react-redux";
 import { LoginUser } from "../../actions/user_action";
@@ -41,8 +41,8 @@ function LoginForm() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   function responseHandler(res) {
-    console.log(res);
-    if (res.data.message !== "userCreated") {
+    console.log(res.data);
+    if (res.data.msg !== "Log in Screen") {
       alert("wrong ceredential");
     } else {
       dispatch(LoginUser());
@@ -53,20 +53,21 @@ function LoginForm() {
   function submitHandler(event) {
     event.preventDefault();
     const data = {
-      email: email,
-      password: password,
+      'email': email,
+      'password': password,
     };
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Accept': "application/json",
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       },
       data: data,
     };
 
     axios
-      .post("http://localhost:8080/auth/login", config, data)
+      .post("http://localhost:8000/api/user/login/", {email: email, password: password},{ withCredentials: true })
       .then((res) => responseHandler(res))
-      .catch((err) => console.log("error"));
+      .catch((err) => console.log(err));
   }
   return (
     <>
@@ -92,7 +93,7 @@ function LoginForm() {
             />
             <div className={styles.password}>Password</div>
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="Password"
               id="#"

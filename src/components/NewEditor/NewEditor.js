@@ -1,13 +1,6 @@
 import React from "react";
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from "draft-js";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import styles from './NewEditor.module.css'
-import { useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import draftToHtml from "draftjs-to-html";
-import { useRef } from "react";
 
 export default function TextEditor2() {
 

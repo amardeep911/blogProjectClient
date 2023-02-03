@@ -28,9 +28,9 @@ const Welcome = () => {
       },
     };
     axios
-      .get("http://localhost:8080/blog/getallblogs", config)
+      .get("http://127.0.0.1:8000/api/user/getllblog/", config)
       .then((res) => {
-        const data = res.data.blogsArray;
+        const data = res.data.data;
         console.log(data);
         setBlogsArray([...data]);
       })
@@ -50,10 +50,10 @@ const Welcome = () => {
                 <Card
                   userName={"Amardeep"}
                   title={item.blogTitle}
-                  content={item.blogText}
+                  content={item.blogContent}
                   date={"21th january"}
-                  id={item._id}
-                  key={item._id}
+                  id={item.blogId}
+                  key={item.blogId}
                 />
               );
             })}
