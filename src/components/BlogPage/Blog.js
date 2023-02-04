@@ -9,10 +9,12 @@ const BlogPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
+  const [id, setId] = useState('')
 
   useEffect(() => {
     //fetch blog from server
     async function fetchBlog(id) {
+      setId(id)
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -56,9 +58,9 @@ const BlogPage = () => {
       },
     };
     axios
-      .delete("http://localhost:8080/blog/deleteblog", config)
+      .post("http://127.0.0.1:8000/api/user/deleteBlog/", {blogId:id})
       .then((res) =>
-        navigate("/homePage", { state: { blogId: res.data.blogId } })
+        navigate("/homePage")
       )
       .catch((err) => console.log("There is an error in deleting blog"));
   }
