@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 export default function EditPage(isEdit) {
   const dispatch = useDispatch();
   const location = useLocation();
-
+  const [id, setId] = useState('')
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const navigate = useNavigate();
   const [blogTitle, setBlogTitle] = useState("");
@@ -27,6 +27,7 @@ export default function EditPage(isEdit) {
     setEditorState(editorState);
   }
   useEffect(() => {
+    
     //fetch blog from server
 
     // async function getAuth() {
@@ -46,6 +47,7 @@ export default function EditPage(isEdit) {
     // getAuth();
 
     async function fetchBlog(id) {
+      setId(id)
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -70,24 +72,10 @@ export default function EditPage(isEdit) {
     fetchBlog(location.state.blogId);
   }, []);
   const updateHandler = () => {
-    console.log(convertToRaw(editorState.getCurrentContent()));
-    const data = {
-      blogContent: draftToHtml(convertToRaw(editorState.getCurrentContent())),
-      blogTitle: blogTitle,
-      blogText: convertToRaw(editorState.getCurrentContent()).blocks[0].text,
-      blogRawContentData: convertToRaw(editorState.getCurrentContent()),
-      blogId: location.state.blogId,
-    };
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
     axios
-      .put("http://localhost:8080/blog/update", config, data)
+      .post("http://127.0.0.1:8000/api/user/updateBlog/", {'blogId': id, 'blogContent': blogContent, 'blogTitle': blogTitle})
       .then((res) => {
-        navigate("/blogPage", { state: { blogId: res.data.blogId } });
+        navigate("/homePage")
       })
       .catch((err) => console.log("error"));
   };
