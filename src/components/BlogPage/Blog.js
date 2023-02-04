@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Blog.module.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -21,14 +21,15 @@ const BlogPage = () => {
           blogId: id,
         },
       };
+      const data = { blogId: id}
 
       axios
-        .get("http://localhost:8080/blog/getsingleblog", config, {})
+        .post("http://127.0.0.1:8000/api/user/getSingleBlog/", {blogId:id})
         .then((res) => {
           const displayElement = document.getElementById("displayElement");
-          displayElement.innerHTML = `${res.data.blogContent}`;
+          displayElement.innerHTML = `${res.data.data.blogContent}`;
           const headingBlog = document.getElementById("blogHeading");
-          headingBlog.innerText = `${res.data.blogTitle}`;
+          headingBlog.innerText = `${res.data.data.blogTitle}`;
         })
         .catch((err) => console.log(err));
     }

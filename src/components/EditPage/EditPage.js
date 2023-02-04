@@ -22,27 +22,28 @@ export default function EditPage(isEdit) {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const navigate = useNavigate();
   const [blogTitle, setBlogTitle] = useState("");
+  const [blogContent, setBlogContent] = useState("")
   function onEditorStateChange(editorState) {
     setEditorState(editorState);
   }
   useEffect(() => {
     //fetch blog from server
 
-    async function getAuth() {
-      try {
-        const user = await getUser();
-        if (!user) {
-          dispatch(LogOutUser());
-          return;
-        }
-        dispatch(LoginUser());
-        navigate("/editpage");
-      } catch (err) {
-        console.log(err);
-        dispatch(LogOutUser());
-      }
-    }
-    getAuth();
+    // async function getAuth() {
+    //   try {
+    //     const user = await getUser();
+    //     if (!user) {
+    //       dispatch(LogOutUser());
+    //       return;
+    //     }
+    //     dispatch(LoginUser());
+    //     navigate("/editpage");
+    //   } catch (err) {
+    //     console.log(err);
+    //     dispatch(LogOutUser());
+    //   }
+    // }
+    // getAuth();
 
     async function fetchBlog(id) {
       const config = {
@@ -55,19 +56,14 @@ export default function EditPage(isEdit) {
       };
 
       axios
-        .get("http://localhost:8080/blog/getsingleblog", config, {})
+        .post("http://127.0.0.1:8000/api/user/getSingleBlog/", {blogId:id})
         .then((res) => {
-          const htmlData = res.data.blogContent;
-          const blogTitle = res.data.blogTitle;
-          const inputElement = document.getElementById("titleInput");
-          inputElement.value = `${blogTitle}`;
-          const blocksFromHTML = convertFromHTML(htmlData);
-          const contentState = ContentState.createFromBlockArray(
-            blocksFromHTML.contentBlocks,
-            blocksFromHTML.entityMap
-          );
+          console.log(res.data.data)
+          const blogTitle = document.getElementById("titleInput");
+          blogTitle.value = res.data.data.blogTitle;
+          const blogContent = document.getElementById("blogContent");
+          blogContent.value = res.data.data.blogContent;
 
-          setEditorState(EditorState.createWithContent(contentState));
         })
         .catch((err) => console.log(err));
     }
@@ -111,12 +107,14 @@ export default function EditPage(isEdit) {
         />
         <div className={styles.blogHere}>Enter blog here</div>
 
-        <Editor
-          editorState={editorState}
-          toolbarClassName="toolbarClassName"
-          wrapperClassName={styles.textarea}
-          editorClassName={styles.editor}
-          onEditorStateChange={onEditorStateChange}
+        <input
+          type="text"
+          id="blogContent"
+          placeholder="Enter Blog here"
+          className={styles.titleInput}
+          onChange={(event) => {
+            setBlogContent(event.target.value);
+          }}
         />
         <button className={styles.editorSubmitButton} onClick={updateHandler}>
           {" "}

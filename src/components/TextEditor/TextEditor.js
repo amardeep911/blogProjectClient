@@ -39,7 +39,7 @@ export default function TextEditor2(isEdit) {
         blogTitle: blogTitle,
       })
       .then((res) => {
-        navigate("/blogpage",);
+        navigate("/homePage")
       })
       .catch((err) => console.log(err));
   };
