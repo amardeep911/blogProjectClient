@@ -17,31 +17,29 @@ function LoginForm() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(email);
-  useEffect(() => {
-    async function getAuth() {
-      try {
-        const user = await getUser();
-        if (!user) {
-          dispatch(LogOutUser());
+  // useEffect(() => {
+  //   async function getAuth() {
+  //     try {
+  //       const user = await getUser();
+  //       if (!user) {
+  //         dispatch(LogOutUser());
 
-          return;
-        }
-        dispatch(LoginUser());
+  //         return;
+  //       }
+  //       dispatch(LoginUser());
 
-        navigate("/homePage");
-      } catch (err) {
-        console.log(err);
-        dispatch(LogOutUser());
-      }
-    }
-    getAuth();
-  }, []);
-  console.log(password);
+  //       navigate("/homePage");
+  //     } catch (err) {
+  //       console.log(err);
+  //       dispatch(LogOutUser());
+  //     }
+  //   }
+  //   getAuth();
+  // }, []);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   function responseHandler(res) {
-    console.log(res.data);
+
     if (res.data.msg !== "Log in Screen") {
       alert("wrong ceredential");
     } else {
@@ -86,7 +84,7 @@ function LoginForm() {
             <input
               type="email"
               name="username"
-              id="#"
+              id="1"
               placeholder="email"
               className={styles.userInput}
               onChange={(e) => setEmail(e.currentTarget.value)}
@@ -96,7 +94,7 @@ function LoginForm() {
               type="password"
               name="password"
               placeholder="Password"
-              id="#"
+              id="2"
               className={styles.userInput}
               onChange={(e) => setPassword(e.currentTarget.value)}
             />
