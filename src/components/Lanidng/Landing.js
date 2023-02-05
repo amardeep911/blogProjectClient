@@ -44,18 +44,18 @@ const Landing = () => {
     <Navbar/>
     <div className={styles.container}>
       <div className={styles.left}>
-        <h1 className={styles.title}>BlogKart</h1>
+        <h1 className={styles.title}>BlogsKart</h1>
         <h1 className={styles.heading}>
-          Thoughts & ideas around the things that actually matter
+          Thoughts & ideas around the things that actually matter. <br/> Come and join with us
         </h1>
       </div>
       <div className={styles.right}>
         <p>Log in</p>
-        <button className={styles.logInBtn} onClick={logInHandler}>
+        <button class="btn btn-lg btn-success" onClick={logInHandler}>
           Log In
         </button>
-        <p>Don't have an account</p>
-        <button className={styles.logInBtn} onClick={signUpHandler}>
+        <p>Don't have an account ?</p>
+        <button class="btn btn-lg btn-danger" onClick={signUpHandler}>
           Sign Up
         </button>
       </div>

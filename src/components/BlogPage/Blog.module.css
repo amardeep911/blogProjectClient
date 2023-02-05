@@ -7,8 +7,27 @@
 .blogContent {
   background-color: rgb(244, 249, 249);
   display: grid;
-  grid-template-rows: 1fr 3fr;
+  grid-template-rows: 1fr 3fr 0.3fr;
 }
+.buttons{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 2rem
+
+  
+
+}
+.buttons.btn{
+  margin-left: 2rem;
+}
+.custom1{
+  margin-left: 2rem;
+}
+
+
 .heading {
   margin: 2rem 2rem;
 
@@ -19,13 +38,12 @@
   font-weight: 700;
 }
 .blogText {
-  border: 2px solid black;
-  border-radius: 0.5rem;
+
   padding: 1rem;
   margin: 2rem 2rem;
   font-size: 1.8rem;
-  font-family: "Crimson Text", serif;
-  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
   color: rgb(0, 0, 0);
 }
 

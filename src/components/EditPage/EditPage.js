@@ -83,7 +83,7 @@ export default function EditPage(isEdit) {
     <div className={styles.container}>
       <div className="blank"></div>
       <div className={styles.main}>
-        <div className={styles.title}>Enter Title here</div>
+        <div className={styles.title}>Enter Title</div>
         <input
           type="text"
           id="titleInput"
@@ -93,21 +93,10 @@ export default function EditPage(isEdit) {
             setBlogTitle(event.target.value);
           }}
         />
-        <div className={styles.blogHere}>Enter blog here</div>
+        <div className={styles.blogHere}>Enter Blog</div>
 
-        <input
-          type="text"
-          id="blogContent"
-          placeholder="Enter Blog here"
-          className={styles.titleInput}
-          onChange={(event) => {
-            setBlogContent(event.target.value);
-          }}
-        />
-        <button className={styles.editorSubmitButton} onClick={updateHandler}>
-          {" "}
-          Update
-        </button>
+        <textarea name="blog" id="blogContent" placeholder="Tell your story" onChange={(event)=> {setBlogContent(event.currentTarget.value)}} className={styles.textarea}></textarea>
+        <button class="btn mt-2 btn-success" onClick={updateHandler}>Update</button>
       </div>
 
       <div className="blank"></div>

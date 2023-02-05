@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./loginForm.module.css";
 import "./loginForm.module.css";
 import { useRef, useState } from "react";
+import './login.css'
 import axios from "axios";
 import { json, useNavigate } from "react-router-dom";
 import background from "../../assets/images/background.png";
@@ -75,35 +76,30 @@ function LoginForm() {
           <div className={styles.left}>
             <div className={styles.title}>Welcome on board!</div>
             <div className={styles.logInText}>
-              Lorem Ipsem askdfnn dfie fl sieg ia wlghji lih zpobu wmw wtyuib di
-              akvh dkho kwn bil vi dl eiqnb.
+            Be the first to know about latest updates, volunteer opportunities, events, and more. <br/> Stories and updates from the Unspoken Smiles team, partners, and supporters. Dontate.
             </div>
           </div>
           <div className={styles.right}>
-            <div className={styles.username}>Username</div>
-            <input
-              type="email"
-              name="username"
-              id="1"
-              placeholder="email"
-              className={styles.userInput}
-              onChange={(e) => setEmail(e.currentTarget.value)}
-            />
-            <div className={styles.password}>Password</div>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              id="2"
-              className={styles.userInput}
-              onChange={(e) => setPassword(e.currentTarget.value)}
-            />
-
-            <div className={styles.btn}>
-              <button className={styles.logInScreenBtn} onClick={submitHandler}>
-                Login
-              </button>
-            </div>
+          <div class="login-box">
+  <h2>Login</h2>
+  <form>
+    <div class="user-box">
+      <input type="text" name="" required="" onChange={(e) => setEmail(e.currentTarget.value)}/>
+      <label>Username</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="" required="" onChange={(e) => setPassword(e.currentTarget.value)}/>
+      <label>Password</label>
+    </div>
+    <a href="#" onClick={submitHandler}>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
+</div>
           </div>
         </div>
       </div>

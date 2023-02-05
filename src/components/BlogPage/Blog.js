@@ -75,9 +75,10 @@ const BlogPage = () => {
         <div className={styles.blogText} id="displayElement">
           {isLoading && <div>Blog is lOADING</div>}
         </div>
-        <button onClick={editBlogHandler}> Edit </button>
-        <button onClick={backHandler}> Home Page </button>
-        <button onClick={deleteHandler}> Delte Blog</button>
+        <div className={styles.buttons}>
+        <button onClick={editBlogHandler} class="btn btn-primary custom1 ml-1"> Edit </button>
+        <button onClick={deleteHandler} class="btn custom2 btn-primary ml-10"> Delte Blog</button>
+        </div>
       </div>
     </div>
   );

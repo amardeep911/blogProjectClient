@@ -57,16 +57,9 @@ export default function TextEditor2(isEdit) {
           }}
         />
         <div className={styles.blogHere}>Enter blog here</div>
-        <input
-          type="text"
-          placeholder="Enter Blog here"
-          className={styles.titleInput}
-          onChange={(event) => {
-            setBlogContent(event.target.value);
-          }}
-        />
+        <textarea name="blog" id="1" placeholder="Tell your story" onChange={(event)=> {setBlogContent(event.currentTarget.value)}} className={styles.textarea}></textarea>
         
-        <button className={styles.editorSubmitButton} onClick={blogSaveHandler}>
+        <button class="btn btn-success mt-3" onClick={blogSaveHandler}>
           {" "}
           Submit
         </button>

@@ -12,6 +12,7 @@ import BlogPage from "./components/BlogPage/Blog";
 import NewEditor from "./components/NewEditor/NewEditor";
 import TextEditor from "./components/TextEditor/TextEditor";
 import EditPage from "./components/EditPage/EditPage";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 //import
 function App() {
   return (

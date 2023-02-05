@@ -6,6 +6,12 @@
   grid-template-columns: 1fr;
   margin-top: 2rem;
   background-color: whitesmoke;
+  transition: 0.4s;
+  border-radius: 5px;
+}
+.container:hover{
+  scale: 1.1;
+  background-color: rgb(232, 232, 232)
 }
 .left {
   margin: 2rem;

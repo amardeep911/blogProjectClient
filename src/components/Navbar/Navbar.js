@@ -53,9 +53,6 @@ const Navbar = () => {
           <li>
             <a href="/">About me</a>
           </li>
-          <li>
-            <button className={styles.navbarButton}>LogOut</button>
-          </li>
         </ul>
       </div>
     </>
