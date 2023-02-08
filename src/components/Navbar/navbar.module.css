@@ -1,6 +1,9 @@
 .container {
   display: flex;
-
+  /* position: fixed;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1; */
   background-color: rgb(76, 23, 145);
   font-size: 2rem;
   padding: 0.5rem 0rem;

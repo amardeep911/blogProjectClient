@@ -46,7 +46,7 @@ const Landing = () => {
       <div className={styles.left}>
         <h1 className={styles.title}>BlogsKart</h1>
         <h1 className={styles.heading}>
-          Thoughts & ideas around the things that actually matter. <br/> Come and join with us
+          Thoughts & ideas around the things that actually matter. <br/> Come and join with us...
         </h1>
       </div>
       <div className={styles.right}>
