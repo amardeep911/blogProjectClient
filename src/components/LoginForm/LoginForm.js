@@ -17,6 +17,17 @@ import { LogOutUser } from "../../actions/user_action";
 import { getUser } from "../../api/User";
 axios.defaults.withCredentials = true;
 function LoginForm() {
+  function ValidateEmail(mail) 
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+  {
+    return (true)
+  }
+  const notify = () => toast.error("Email is not valid!!!");
+  notify()
+  return (false)
+   
+}
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -59,6 +70,12 @@ function LoginForm() {
   }
   function submitHandler(event) {
     event.preventDefault();
+    ValidateEmail(email)
+    if(password == ""){
+      const notify = () => toast.error("plz enter password!!!");
+      notify();
+      return false
+    }
     const data = {
       'email': email,
       'password': password,

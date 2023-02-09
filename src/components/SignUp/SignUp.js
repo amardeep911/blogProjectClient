@@ -26,9 +26,19 @@ function SignUp() {
   console.log(email);
   console.log(password);
 
-
+  function ValidateEmail(mail) 
+  {
+   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+    {
+      return (true)
+    }
+    const notify = () => toast.error("Email is not valid!!!");
+    notify()
+    return (false)
+     
+  }
   function submitHandler(event) {
-    
+    ValidateEmail(email)
     event.preventDefault();
     const data = {
       email: email,
