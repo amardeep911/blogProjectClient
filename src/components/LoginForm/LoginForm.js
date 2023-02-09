@@ -110,7 +110,7 @@ function LoginForm() {
   <form>
     <div class="user-box">
       <input type="text" name="" required="" onChange={(e) => setEmail(e.currentTarget.value)}/>
-      <label>Username</label>
+      <label>Email</label>
     </div>
     <div class="user-box">
       <input type="password" name="" required="" onChange={(e) => setPassword(e.currentTarget.value)}/>

@@ -9,11 +9,9 @@ import {MdPassword} from "react-icons/md"
 import signUp from '../../assets/images/signup.jpg'
 import {FaUserCircle} from 'react-icons/fa'
 import {HiOutlineMail} from 'react-icons/hi'
-// const { register, handleSubmit, getValues, watch, formState: { errors } } = useForm();
 import axios from "axios";
 axios.defaults.withCredentials = true;
-// import qs from 'query-string'
-// import navigate from 'react-router-dom'
+
 function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -21,10 +19,6 @@ function SignUp() {
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState('')
   const [password2, setPassword2] = useState('')
-  const [toaster, setToaster] = useState(false)
-
-  console.log(email);
-  console.log(password);
 
   function ValidateEmail(mail) 
   {
