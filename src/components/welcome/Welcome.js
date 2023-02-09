@@ -3,6 +3,8 @@ import styles from "./welcome.module.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { LogOutUser } from "../../actions/user_action";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Card from "../Card/Card";
 import axios from "axios";
 import { useEffect } from "react";
@@ -21,7 +23,10 @@ const Welcome = () => {
     navigate("/editor");
   }
   const [blogsArray, setBlogsArray] = useState([]);
+
+  const notify = () => toast("Log in successfully");
   useEffect(() => {
+
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -63,6 +68,7 @@ const Welcome = () => {
           <div className={styles.blank}></div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

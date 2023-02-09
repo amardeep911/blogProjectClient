@@ -28,23 +28,23 @@ export default function EditPage(isEdit) {
   }
   useEffect(() => {
     
-    //fetch blog from server
+   
 
-    // async function getAuth() {
-    //   try {
-    //     const user = await getUser();
-    //     if (!user) {
-    //       dispatch(LogOutUser());
-    //       return;
-    //     }
-    //     dispatch(LoginUser());
-    //     navigate("/editpage");
-    //   } catch (err) {
-    //     console.log(err);
-    //     dispatch(LogOutUser());
-    //   }
-    // }
-    // getAuth();
+    async function getAuth() {
+      try {
+        const user = await getUser();
+        if (!user) {
+          dispatch(LogOutUser());
+          return;
+        }
+        dispatch(LoginUser());
+        navigate("/editpage");
+      } catch (err) {
+        console.log(err);
+        dispatch(LogOutUser());
+      }
+    }
+    getAuth();
 
     async function fetchBlog(id) {
       setId(id)
@@ -61,10 +61,12 @@ export default function EditPage(isEdit) {
         .post("http://127.0.0.1:8000/api/user/getSingleBlog/", {blogId:id})
         .then((res) => {
           console.log(res.data.data)
-          const blogTitle = document.getElementById("titleInput");
-          blogTitle.value = res.data.data.blogTitle;
-          const blogContent = document.getElementById("blogContent");
-          blogContent.value = res.data.data.blogContent;
+          // const blogTitle = document.getElementById("titleInput");
+          setBlogTitle(res.data.data.blogTitle)
+          // blogTitle.value = res.data.data.blogTitle;
+          // const blogContent = document.getElementById("blogContent");
+          setBlogContent(res.data.data.blogContent)
+          // blogContent.value = res.data.data.blogContent;
 
         })
         .catch((err) => console.log(err));
@@ -92,10 +94,11 @@ export default function EditPage(isEdit) {
           onChange={(event) => {
             setBlogTitle(event.target.value);
           }}
+          value={blogTitle}
         />
         <div className={styles.blogHere}>Enter Blog</div>
 
-        <textarea name="blog" id="blogContent" placeholder="Tell your story" onChange={(event)=> {setBlogContent(event.currentTarget.value)}} className={styles.textarea}></textarea>
+        <textarea name="blog" id="blogContent" placeholder="Tell your story" onChange={(event)=> {setBlogContent(event.currentTarget.value)}} value={blogContent} className={styles.textarea}></textarea>
         <button class="btn mt-2 btn-success" onClick={updateHandler}>Update</button>
       </div>
 

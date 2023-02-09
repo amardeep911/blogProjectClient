@@ -3,6 +3,8 @@ import styles from "./loginForm.module.css";
 import "./loginForm.module.css";
 import { useRef, useState } from "react";
 import './login.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios";
 import { json, useNavigate } from "react-router-dom";
 import background from "../../assets/images/background.png";
@@ -18,37 +20,43 @@ function LoginForm() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // useEffect(() => {
-  //   async function getAuth() {
-  //     try {
-  //       const user = await getUser();
-  //       if (!user) {
-  //         dispatch(LogOutUser());
+  useEffect(() => {
+    async function getAuth() {
+      try {
+        const user = await getUser();
+        console.log(user)
+        if (!user) {
+          dispatch(LogOutUser());
 
-  //         return;
-  //       }
-  //       dispatch(LoginUser());
+          return;
+        }
+        dispatch(LoginUser());
 
-  //       navigate("/homePage");
-  //     } catch (err) {
-  //       console.log(err);
-  //       dispatch(LogOutUser());
-  //     }
-  //   }
-  //   getAuth();
-  // }, []);
+        navigate("/homePage");
+      } catch (err) {
+        console.log(err);
+        dispatch(LogOutUser());
+      }
+    }
+    getAuth();
+  }, []);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const token = localStorage.getItem('token')
+  console.log(token)
   function responseHandler(res) {
 
     if (res.data.msg !== "Log in Screen") {
-      alert("wrong ceredential");
+      const notify = () => toast.error("Password or username not matched!!!");
+      notify();
     } else {
-      dispatch(LoginUser());
+      // dispatch(LoginUser(res.data.token.access));
+  
+      dispatch(LoginUser(res.data.token.access))
+      localStorage.setItem('token', JSON.stringify(res.data.token.access))
       navigate("/homePage");
     }
   }
-
   function submitHandler(event) {
     event.preventDefault();
     const data = {
@@ -103,6 +111,7 @@ function LoginForm() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }

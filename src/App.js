@@ -18,13 +18,13 @@ function App() {
   return (
     <Routes>
       <Route element={<PrivateRoutes />}>
-        <Route path="/blogpage" element={<BlogPage />} />
-      </Route>
-
+      <Route path="/blogpage" element={<BlogPage />} />
       <Route path="/homePage" element={<Welcome />} />
       <Route path="/editpage" element={<EditPage />} />
       <Route path="/editor" element={<TextEditor />} />
       <Route path="/neweditor" element={<NewEditor />} />
+      </Route>
+
       <Route path="/login" element={<LoginForm />} />
       <Route path="/card" element={<Card />} />
       <Route path="/nav" element={<Navbar />} />

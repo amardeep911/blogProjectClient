@@ -1,9 +1,8 @@
 export const LoginUser = (data) => {
+  console.log(data)
   return {
     type: "LOG_IN",
-    payload: {
-      user: data,
-    },
+    payload: data
   };
 };
 export const LogOutUser = () => {

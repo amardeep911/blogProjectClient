@@ -1,6 +1,6 @@
 const initialState = {
   loggedIn: false,
-  user: {},
+  user: "",
 };
 const UserReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -8,6 +8,7 @@ const UserReducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: true,
+        user: action.payload
       };
     case "LOG_OUT":
       return {

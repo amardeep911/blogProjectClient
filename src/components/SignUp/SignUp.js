@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./SignUp.module.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './singup.css'
@@ -19,11 +21,14 @@ function SignUp() {
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState('')
   const [password2, setPassword2] = useState('')
+  const [toaster, setToaster] = useState(false)
 
   console.log(email);
   console.log(password);
 
+
   function submitHandler(event) {
+    
     event.preventDefault();
     const data = {
       email: email,
@@ -31,7 +36,7 @@ function SignUp() {
       name: name,
       password2: password2,
     };
-
+    
     function responseHandler(res) {
       console.log(res)
       if (res.data.msg !== "registration successfully") {
@@ -44,8 +49,13 @@ function SignUp() {
       },
       data: data,
     };
-
-    axios
+    if(password != password2){
+      const notify = () => toast.error("Password and confirm password not matched");
+      notify();
+    
+    }
+    else {
+      axios
       .post("http://127.0.0.1:8000/api/user/register/", {
         'email': email,
         'password': password,
@@ -54,11 +64,14 @@ function SignUp() {
       } )
       .then((res) => responseHandler(res))
       .catch((err) => console.log(err));
+    }
+    
   }
 
   return (
+
   
-       <section class="signup">
+       <section class="signup">   
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
@@ -95,6 +108,7 @@ function SignUp() {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </section>
     
   );
