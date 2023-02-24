@@ -8,6 +8,9 @@ import { LogOutUser } from "../../actions/user_action";
 import { LoginUser } from "../../actions/user_action";
 import Navbar from "../Navbar/Navbar";
 const Landing = () => {
+ const clickHandler = ()=> { 
+  alert('My name is amardeep')
+  }
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
@@ -47,6 +50,7 @@ const Landing = () => {
         <h1 className={styles.title}>BlogsKart</h1>
         <h1 className={styles.heading}>
           Thoughts & ideas around the things that actually matter. <br/> Come and join with us...
+          <button onClick={clickHandler}>Alert</button>
         </h1>
       </div>
       <div className={styles.right}>
